@@ -21,9 +21,10 @@ const ExampleListView = () => {
 
 	const options = [{ value: '', label: 'Nenhum' }, ...(controller.schema.type.options?.() ?? [])];
 
+	
 	return (
 		<Container>
-			<Typography variant="h5">Lista de Itens</Typography>
+			<Typography variant="h5">Lista de Itens </Typography>
 			<SearchContainer>
 				<SysTextField
 					name="search"

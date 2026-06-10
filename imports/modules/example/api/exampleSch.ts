@@ -17,7 +17,11 @@ export const exampleSch: ISchema<IExample> = {
 		type: String,
 		label: 'Nome',
 		defaultValue: '',
-		optional: false
+		optional: false,
+		validationFunction: (value: string) => {
+			if (value.length < 3) return 'O nome deve conter pelo menos 3 caracteres.';
+				return undefined;
+			}
 	},
 	description: {
 		type: String,
