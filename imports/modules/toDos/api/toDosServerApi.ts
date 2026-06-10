@@ -48,7 +48,7 @@ class ToDosServerApi extends ProductServerBase<IToDos> {
 			});
 		});
 
-		this.addRestEndpoint(
+		/* this.addRestEndpoint(
 			'view',
 			(params, options) => {
 				console.log('Params', params);
@@ -76,7 +76,7 @@ class ToDosServerApi extends ProductServerBase<IToDos> {
 				}
 			},
 			['get']
-		);
+		); */
 	}
 }
 

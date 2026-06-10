@@ -3,6 +3,7 @@ import { Recurso } from '../config/recursos';
 import { exampleSch, IExample } from './exampleSch';
 import { userprofileServerApi } from '../../../modules/userprofile/api/userProfileServerApi';
 import { ProductServerBase } from '../../../api/productServerBase';
+import { IUserProfile } from '../../userprofile/api/userProfileSch';
 
 // endregion
 
@@ -48,6 +49,19 @@ class ExampleServerApi extends ProductServerBase<IExample> {
 			});
 		});
 
+		this.addTransformedPublication(
+			`exampleDetail`, 
+			async (filter = {}) => {
+				return this.find(filter);
+			},
+			async (doc: Partial<IExample >): Promise<Partial<IExample & {username: string}>> => {
+				const user : IUserProfile = await userprofileServerApi.getCollectionInstance().findOneAsync({ _id: doc.createdby },
+					{fields: {username: 1}}
+				);
+				console.log('User do exemplo', user);
+				return {...doc, title: "Título modificado na publicação", username: user.username };
+			}
+	);
 	// 	this.addRestEndpoint(
 	// 		'view',
 	// 		(params, options) => {
