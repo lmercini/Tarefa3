@@ -69,5 +69,6 @@ const ExampleDetailStyles: IStyles = {
 }  )
 
 }
+// teste do github
 
 export default ExampleDetailStyles;
